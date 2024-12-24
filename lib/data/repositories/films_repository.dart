@@ -19,4 +19,19 @@ class FilmsRepository {
       throw Exception('Error on load films: $e');
     }
   }
+
+  Future<Films> fetchFilmById(String id) async {
+    try {
+      final response = await http.get(Uri.parse('$_url/$id'));
+
+      if (response.statusCode == 200) {
+        var data = json.decode(response.body);
+        return Films.fromJson(data);
+      } else {
+        throw Exception('Error on load film with id $id');
+      }
+    } catch (e) {
+      throw Exception('Error on load film by ID: $e');
+    }
+  }
 }

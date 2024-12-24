@@ -13,7 +13,7 @@ class ErrorMessage extends StatelessWidget {
         error,
         style: const TextStyle(
           color: kAppBarColor,
-          fontSize: 22,
+          fontSize: 12,
         ),
       ),
     );

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:o_catalogo_de_cagliostro/data/models/films.dart';
+import 'package:o_catalogo_de_cagliostro/presentation/providers/films_provider.dart';
 import 'package:o_catalogo_de_cagliostro/presentation/screens/film_screen.dart';
 import 'package:o_catalogo_de_cagliostro/presentation/widgets/featured_film.dart';
 import 'package:o_catalogo_de_cagliostro/presentation/widgets/film_list.dart';
+import 'package:provider/provider.dart';
 
 class ContentHome extends StatefulWidget {
   final List<Films> films;
@@ -22,11 +24,14 @@ class _ContentHomeState extends State<ContentHome> {
     featuredFilm = widget.films[0];
   }
 
-  void changeFeaturedFilm(Films film) {
+    void changeFeaturedFilm(Films film) async {
+    final provider = Provider.of<FilmsProvider>(context, listen: false);
+    final updatedFilm = await provider.fetchFilmById(film.id); 
     setState(() {
-      featuredFilm = film;
+      featuredFilm = updatedFilm;
     });
   }
+
 
   @override
   Widget build(BuildContext context) {

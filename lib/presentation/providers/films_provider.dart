@@ -17,10 +17,19 @@ class FilmsProvider extends ChangeNotifier {
       notifyListeners();
       films = await _filmsRepository.fetchFilms();
     } catch (e) {
-      error = 'Erro ao buscar filmes: $e';
+      error = 'Error in serching films: $e';
     } finally {
       isLoading = false;
       notifyListeners();
+    }
+  }
+
+  Future<Films> fetchFilmById(String id) async {
+    try {
+      final film = await _filmsRepository.fetchFilmById(id);
+      return film;
+    } catch (e) {
+      throw Exception('Failed in serching film: $e');
     }
   }
 }
