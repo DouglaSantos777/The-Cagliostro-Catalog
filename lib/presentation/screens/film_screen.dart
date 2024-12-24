@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:o_catalogo_de_cagliostro/core/constants.dart';
 import 'package:o_catalogo_de_cagliostro/data/models/film.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart'; // Importando o widget de loading
+import 'package:flutter_spinkit/flutter_spinkit.dart'; 
 
 class FilmScreen extends StatelessWidget {
   final Film film;
