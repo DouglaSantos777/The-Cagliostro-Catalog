@@ -7,19 +7,21 @@ class HeaderHome extends StatelessWidget implements PreferredSizeWidget {
   const HeaderHome({super.key, required this.title});
 
   @override
-  Size get preferredSize => const Size.fromHeight(80.0);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      title: const Center( 
-        child: Text(
-          "The Cagliostro Catalog",
-          style: kAppBarTextStyle,
+    return PreferredSize(
+      preferredSize: const Size.fromHeight(kToolbarHeight),
+      child: AppBar(
+        title: Text(title, style: kAppBarTextStyle),
+        backgroundColor: kGhibliColor,
+        elevation: 2,
+        centerTitle: true,
+        iconTheme: const IconThemeData(
+          color: Colors.white,
         ),
       ),
-      backgroundColor: kAppBarColor,
-      centerTitle: true,
     );
   }
 }

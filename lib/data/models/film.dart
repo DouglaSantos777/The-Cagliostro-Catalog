@@ -51,23 +51,23 @@ class Film {
 
   factory Film.fromJson(Map<String, dynamic> json) {
     return Film(
-      id: json['id'],
-      title: json['title'],
-      originalTitle: json['original_title'],
-      originalTitleRomanised: json['original_title_romanised'],
-      image: json['image'],
-      movieBanner: json['movie_banner'],
-      description: json['description'],
-      director: json['director'],
-      producer: json['producer'],
-      releaseDate: json['release_date'],
-      runningTime: json['running_time'],
-      rtScore: json['rt_score'],
-      people: List<String>.from(json['people']),
-      species: List<String>.from(json['species']),
-      locations: List<String>.from(json['locations']),
-      vehicles: List<String>.from(json['vehicles']),
-      url: json['url'],
+      id: json['id'] ?? '',
+      title: json['title'] ?? '',
+      originalTitle: json['original_title'] ?? '',
+      originalTitleRomanised: json['original_title_romanised'] ?? '',
+      image: json['image'] ?? '',
+      movieBanner: json['movie_banner'] ?? '',
+      description: json['description'] ?? '',
+      director: json['director'] ?? '',
+      producer: json['producer'] ?? '',
+      releaseDate: json['release_date'] ?? '',
+      runningTime: json['running_time'] ?? '',
+      rtScore: json['rt_score'] ?? '',
+      people: List<String>.from(json['people'] ?? []),
+      species: List<String>.from(json['species'] ?? []),
+      locations: List<String>.from(json['locations'] ?? []),
+      vehicles: List<String>.from(json['vehicles'] ?? []),
+      url: json['url'] ?? '',
     );
   }
 
@@ -92,5 +92,4 @@ class Film {
       'url': url,
     };
   }
-
-} 
+}

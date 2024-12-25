@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:o_catalogo_de_cagliostro/core/constants.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart'; // Importando o widget de loading
+import 'package:o_catalogo_de_cagliostro/presentation/widgets/film_image.dart';
 
-class FilmRow extends StatelessWidget {
+class FilmBlock extends StatelessWidget {
   final String imageUrl;
   final String title;
   final Function onTap;
 
-  const FilmRow({
+  const FilmBlock({
     super.key,
     required this.imageUrl,
     required this.title,
@@ -27,34 +27,16 @@ class FilmRow extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: AspectRatio(
-                aspectRatio: 1,
-                child: Image.network(
-                  imageUrl,
-                  width: size,
-                  fit: BoxFit.cover,
-                  loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
-                    if (loadingProgress == null) {
-                      return child; 
-                    } else {
-                      return const Center(
-                        child: SpinKitSpinningLines(
-                          color: Colors.white,
-                          size: 50.0,
-                        ),
-                      );
-                    }
-                  },
-                ),
-              ),
+            FilmImage(
+              imageUrl: imageUrl,
+              width: size,
+              height: size,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: Text(
                 title,
-                style: kBodyTextStyle,
+                style: kHeaderTextStyle,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
                 textAlign: TextAlign.start,

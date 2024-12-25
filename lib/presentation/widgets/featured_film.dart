@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:o_catalogo_de_cagliostro/core/constants.dart';
+import 'package:o_catalogo_de_cagliostro/presentation/widgets/film_image.dart';
 
 class FeaturedFilm extends StatelessWidget {
   final String title;
@@ -28,47 +29,67 @@ class FeaturedFilm extends StatelessWidget {
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                flex: 8,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.network(
-                    imageUrl,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              const Expanded(
-                flex: 1,
-                child: SizedBox()),
+                  flex: 8,
+                  child: FilmImage(imageUrl: imageUrl, width: double.infinity)),
+              const Expanded(flex: 1, child: SizedBox()),
               Expanded(
-                flex: 3,
+                flex: 4,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       title,
                       style: kTitleTextStyle,
-                      textAlign: TextAlign.center,
                     ),
-                    Text(
-                      'Director: $director',
-                      style: kBodyTextStyle,
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          const TextSpan(
+                            text: 'Director: ',
+                            style: kHeaderTextStyle,
+                          ),
+                          TextSpan(
+                            text: director,
+                            style: kBodyTextStyle,
+                          ),
+                        ],
+                      ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          'Year: $releaseDate',
-                          style: kBodyTextStyle,
+                        RichText(
+                          text: TextSpan(
+                            children: [
+                              const TextSpan(
+                                text: 'Year: ',
+                                style: kHeaderTextStyle,
+                              ),
+                              TextSpan(
+                                text: releaseDate,
+                                style: kBodyTextStyle,
+                              ),
+                            ],
+                          ),
                         ),
                         const SizedBox(width: 15),
-                        Text(
-                          'Score: $rtScore',
-                          style: kBodyTextStyle,
+                        RichText(
+                          text: TextSpan(
+                            children: [
+                              const TextSpan(
+                                text: 'Score: ',
+                                style: kHeaderTextStyle,
+                              ),
+                              TextSpan(
+                                text: rtScore,
+                                style: kBodyTextStyle,
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),

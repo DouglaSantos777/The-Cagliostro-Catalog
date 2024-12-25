@@ -1,9 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:o_catalogo_de_cagliostro/core/constants.dart';
 import 'package:o_catalogo_de_cagliostro/presentation/widgets/content_home.dart';
 import 'package:o_catalogo_de_cagliostro/presentation/widgets/error_message.dart';
+import 'package:o_catalogo_de_cagliostro/presentation/widgets/header_home.dart';
 import 'package:o_catalogo_de_cagliostro/presentation/widgets/loadingIcon.dart';
 import 'package:provider/provider.dart';
 import 'package:o_catalogo_de_cagliostro/presentation/providers/film_provider.dart';
@@ -28,14 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
     log('build called');
     final provider = Provider.of<FilmProvider>(context);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "The Cagliostro Catalog",
-          style: kAppBarTextStyle
-          ),
-        backgroundColor: kAppBarColor,
-        centerTitle: true
-      ),
+      appBar: const HeaderHome(title: "The Cagliostro Catalog"),
       body: provider.isLoading
           ? const LoadingIcon()
           : provider.error.isNotEmpty

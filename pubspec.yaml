@@ -27,8 +27,8 @@ flutter:
   uses-material-design: true
 
   
-  assets:
-    - assets/images/chihiro.jpeg
+#  assets:
+#    - assets/images/chihiro.jpeg
 
   fonts:
     - family: Poppins
@@ -38,3 +38,8 @@ flutter:
           weight: 500
         - asset: assets/fonts/Poppins-Bold.ttf
           weight: 700
+
+    - family: Ghibli
+      fonts:
+        - asset: assets/fonts/futura-medium.ttf
+        

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:o_catalogo_de_cagliostro/data/models/film.dart';
-import 'package:o_catalogo_de_cagliostro/presentation/widgets/film_row.dart';
+import 'package:o_catalogo_de_cagliostro/presentation/widgets/film_block.dart';
 
 class FilmList extends StatelessWidget {
   final List<Film> films;
@@ -16,7 +16,7 @@ class FilmList extends StatelessWidget {
         itemCount: films.length,
         itemBuilder: (context, index) {
           final film = films[index];
-          return FilmRow(
+          return FilmBlock(
             imageUrl: film.image,
             title: film.title,
             onTap: () => onFilmTap(film),

@@ -7,29 +7,32 @@ class FilmProvider extends ChangeNotifier {
 
   FilmProvider(this._filmRepository);
 
-  bool isLoading = true;
+  bool isLoading = false;
   String error = '';
   List<Film> films = [];
 
   Future<void> getDataFromAPI() async {
+    isLoading = true;
+    error = '';
+    notifyListeners();
+
     try {
-      isLoading = true;
-      notifyListeners();
       films = await _filmRepository.fetchFilms();
     } catch (e) {
-      error = 'Error in serching films: $e';
+      error = 'Failed to load films. Please try again later.';
     } finally {
       isLoading = false;
       notifyListeners();
     }
   }
 
-  Future<Film> fetchFilmById(String id) async {
+  Future<Film?> fetchFilmById(String id) async {
     try {
-      final film = await _filmRepository.fetchFilmById(id);
-      return film;
+      return await _filmRepository.fetchFilmById(id);
     } catch (e) {
-      throw Exception('Failed in serching film: $e');
+      error = 'Failed to load film with ID $id. Please try again later.';
+      notifyListeners();
+      return null;
     }
   }
 }

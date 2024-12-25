@@ -28,7 +28,7 @@ class _ContentHomeState extends State<ContentHome> {
     final provider = Provider.of<FilmProvider>(context, listen: false);
     final updatedFilm = await provider.fetchFilmById(film.id);
     setState(() {
-      featuredFilm = updatedFilm;
+      featuredFilm = updatedFilm ?? film;
     });
   }
 

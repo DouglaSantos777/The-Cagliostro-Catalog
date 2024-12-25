@@ -13,10 +13,10 @@ class FilmRepository {
         var data = json.decode(response.body) as List;
         return data.map((e) => Film.fromJson(e)).toList();
       } else {
-        throw Exception('Error on load films');
+        throw Exception('Failed to load films. Status code: ${response.statusCode}');
       }
     } catch (e) {
-      throw Exception('Error on load films: $e');
+      throw Exception('Failed to load films: $e');
     }
   }
 
@@ -28,10 +28,10 @@ class FilmRepository {
         var data = json.decode(response.body);
         return Film.fromJson(data);
       } else {
-        throw Exception('Error on load film with id $id');
+        throw Exception('Failed to load film with id $id. Status code: ${response.statusCode}');
       }
     } catch (e) {
-      throw Exception('Error on load film by ID: $e');
+      throw Exception('Failed to load film by ID: $e');
     }
   }
 }

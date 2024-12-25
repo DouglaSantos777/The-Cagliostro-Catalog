@@ -5,10 +5,12 @@ import 'package:o_catalogo_de_cagliostro/presentation/screens/home_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -23,13 +25,13 @@ class MyApp extends StatelessWidget {
         title: 'The Cagliostro Catalog',
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.transparent,
-          fontFamily: "Poppins",
+          fontFamily: "Ghibli",
         ),
         builder: (context, child) {
           return Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
-                colors: [Color(0xFF1E1E1E), Color(0xFF2A2A2A)], 
+                colors: [ Color.fromARGB(255, 8, 68, 105), Color(0xFF1E1E1E)], 
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),

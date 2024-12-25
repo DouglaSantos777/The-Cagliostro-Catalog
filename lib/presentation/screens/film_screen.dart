@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:o_catalogo_de_cagliostro/core/constants.dart';
 import 'package:o_catalogo_de_cagliostro/data/models/film.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart'; 
+import 'package:o_catalogo_de_cagliostro/presentation/widgets/film_image.dart';
+import 'package:o_catalogo_de_cagliostro/presentation/widgets/header_home.dart';
 
 class FilmScreen extends StatelessWidget {
   final Film film;
@@ -11,47 +12,19 @@ class FilmScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(film.title, style: kAppBarTextStyle),
-        backgroundColor: kAppBarColor,
-        centerTitle: true,
-        iconTheme: const IconThemeData(
-          color: Colors.white,
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Flexible(
-              flex: 4,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Image.network(
-                  film.movieBanner,
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 1,
-                  fit: BoxFit.cover,
-                  loadingBuilder: (BuildContext context, Widget child,
-                      ImageChunkEvent? loadingProgress) {
-                    if (loadingProgress == null) {
-                      return child;
-                    } else {
-                      return const Center(
-                        child: SpinKitSpinningLines(
-                          color: Colors.white,
-                          size: 100.0,
-                        ),
-                      );
-                    }
-                  },
-                ),
+      appBar: HeaderHome(title: film.title),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              FilmImage(
+                imageUrl: film.movieBanner,
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * .4,
               ),
-            ),
-            Flexible(
-              flex: 6,
-              child: Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 16),
@@ -63,22 +36,88 @@ class FilmScreen extends StatelessWidget {
                   Text(
                     film.description,
                     style: kBodyTextStyle,
-                    maxLines: 4,
+                    maxLines: 8,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  const SizedBox(height: 16),
-                  Text(
-                    'Year: ${film.releaseDate}',
-                    style: kBodyTextStyle,
+                  const SizedBox(height: 20),
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        const TextSpan(
+                          text: 'Director: ',
+                          style: kHeaderTextStyle,
+                        ),
+                        TextSpan(
+                          text: film.director,
+                          style: kBodyTextStyle,
+                        ),
+                      ],
+                    ),
                   ),
-                  Text(
-                    'Score: ${film.rtScore}',
-                    style: kBodyTextStyle,
+                  const SizedBox(height: 8),
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        const TextSpan(
+                          text: 'Producer: ',
+                          style: kHeaderTextStyle,
+                        ),
+                        TextSpan(
+                          text: film.producer,
+                          style: kBodyTextStyle,
+                        ),
+                      ],
+                    ),
                   ),
+                  const SizedBox(height: 8),
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        const TextSpan(
+                          text: 'Year: ',
+                          style: kHeaderTextStyle,
+                        ),
+                        TextSpan(
+                          text: film.releaseDate,
+                          style: kBodyTextStyle,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        const TextSpan(
+                          text: 'Score: ',
+                          style: kHeaderTextStyle,
+                        ),
+                        TextSpan(
+                          text: film.rtScore,
+                          style: kBodyTextStyle,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        const TextSpan(
+                          text: 'Running Time: ',
+                          style: kHeaderTextStyle,
+                        ),
+                        TextSpan(
+                          text: film.runningTime,
+                          style: kBodyTextStyle,
+                        ),
+                      ],
+                    ),
+                  ),                
                 ],
               ),
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );
