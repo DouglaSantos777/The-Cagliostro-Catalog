@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:o_catalogo_de_cagliostro/presentation/widgets/content_home.dart';
 import 'package:o_catalogo_de_cagliostro/presentation/widgets/error_message.dart';
 import 'package:o_catalogo_de_cagliostro/presentation/widgets/header_home.dart';
-import 'package:o_catalogo_de_cagliostro/presentation/widgets/loadingIcon.dart';
+import 'package:o_catalogo_de_cagliostro/presentation/widgets/loading_icon.dart';
 import 'package:provider/provider.dart';
 import 'package:o_catalogo_de_cagliostro/presentation/providers/film_provider.dart';
 
