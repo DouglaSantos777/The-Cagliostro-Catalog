@@ -1,4 +1,4 @@
-# Cagliostro_Catalog
+# The Cagliostro Catalog
 
 Projeto em flutter para avaliação 2 de Programação IV
 
@@ -15,5 +15,5 @@ O aplicativo possui 3 funcionalidades principais: listar todos os filmes do Stud
 </div>
 
 
-
+obs: Não tem o Castelo de Cagliostro nessa API, que dá nome ao aplicativo, legal...
 
